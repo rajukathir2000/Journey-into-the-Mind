@@ -7,7 +7,7 @@ public class StageTransition : MonoBehaviour
 {
     public void Button1()
     {
-        SceneManager.LoadScene(2);
+        SceneManager.LoadSceneAsync(2);
     }
 
     public void Button2()
