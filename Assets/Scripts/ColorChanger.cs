@@ -9,6 +9,7 @@ public class SkyboxColorChanger : MonoBehaviour
     public Color startColor = Color.blue; // Initial tint color of the Skybox
     public Color endColor = Color.red; // Target tint color of the Skybox
     public float duration = 2f; // Time to transition colors
+    int c = 0;
 
     private void Start()
     {
@@ -26,8 +27,9 @@ public class SkyboxColorChanger : MonoBehaviour
 
     private void StartColorChange()
     {
-        if (skyboxMaterial != null)
+        if (skyboxMaterial != null &&c==0)
         {
+            c++;
             StartCoroutine(ChangeSkyboxColorGradually());
         }
     }
