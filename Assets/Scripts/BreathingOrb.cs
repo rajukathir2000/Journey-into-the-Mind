@@ -7,12 +7,12 @@ public class BreathingOrb : MonoBehaviour
     public Text buttonText;     // Reference to the Button's Text
     private bool isBreathing;  // State of the animation
     public string line;
-    private Animator animator;
+    public Animator animator;
 
     void Start()
     {
         // Get the Animator component
-        animator = GetComponent<Animator>();
+        //animator = GetComponent<Animator>();
 
         // Ensure the button and text are assigned
         if (toggleButton != null)
@@ -29,7 +29,7 @@ public class BreathingOrb : MonoBehaviour
         if (isBreathing)
         {
             buttonText.text = line;// Update the button text
-            StartBreathingAnimation(); // Start the breathing animation
+            StartAnimating(); // Start the breathing animation
         }
         else
         {
@@ -37,11 +37,12 @@ public class BreathingOrb : MonoBehaviour
         }
     }
 
-    public void StartBreathingAnimation()
+    public void StartAnimating()
     {
         if (animator != null)
         {
-            animator.SetBool("StartBreathing",true);
+            animator.SetBool("Started",true);
+            animator.SetBool("Completed", false);
             //toggleButton.interactable = false;
         }
     }
@@ -50,7 +51,8 @@ public class BreathingOrb : MonoBehaviour
     {
         if (animator != null)
         {
-            animator.SetBool("StartBreathing", false); // Stop the animation trigger
+            animator.SetBool("Started", false);
+            animator.SetBool("Completed", true); // Stop the animation trigger
         }
     }
 }
