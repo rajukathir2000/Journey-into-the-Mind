@@ -8,19 +8,26 @@ public class BreathingOrb : MonoBehaviour
     private bool isBreathing;  // State of the animation
     public string line;
     public Animator animator;
+    public GameObject Lungs,Nurse;
 
     void Start()
     {
-        // Get the Animator component
-        //animator = GetComponent<Animator>();
+        if (Lungs != null)
+        {
+            animator = Lungs.GetComponent<Animator>();
+        }
+        else if (animator = null) 
+        {
+            Debug.Log("Nulled");
+        }
+        
 
-        // Ensure the button and text are assigned
         if (toggleButton != null)
         {
-            // Attach the method to the button's click event
             toggleButton.onClick.AddListener(ToggleBreathing);
         }
     }
+
 
     public void ToggleBreathing()
     {
@@ -31,10 +38,7 @@ public class BreathingOrb : MonoBehaviour
             buttonText.text = line;// Update the button text
             StartAnimating(); // Start the breathing animation
         }
-        else
-        {
-            StopBreathingAnimation(); // Stop the breathing animation
-        }
+       
     }
 
     public void StartAnimating()
@@ -47,12 +51,27 @@ public class BreathingOrb : MonoBehaviour
         }
     }
 
-    public void StopBreathingAnimation()
+    public void LungsToNurse()
     {
-        if (animator != null)
+        Debug.Log($"Switching from Lungs to Nurse. Lungs active: {Lungs.activeSelf}, Nurse active: {Nurse.activeSelf}");
+
+        if (Lungs != null) Lungs.SetActive(false);
+        if (Nurse != null)
         {
-            animator.SetBool("Started", false);
-            animator.SetBool("Completed", true); // Stop the animation trigger
+            Nurse.SetActive(true);
+            animator = null;
+            //animator = Nurse.GetComponent<Animator>();
+           // Debug.Log($"Animator assigned to Nurse: {animator != null}");
         }
+        else
+        {
+            Debug.LogError("Nurse GameObject is not assigned!");
+        }
+    }
+
+
+    public void BreathinPrompt()
+    {
+
     }
 }
