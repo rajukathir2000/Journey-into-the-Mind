@@ -1,77 +1,323 @@
+//using UnityEngine;
+//using UnityEngine.UI;
+//using TMPro;
+
+//public class BreathingOrb : MonoBehaviour
+//{
+//    public Button toggleButton;
+//    public Text buttonText;
+//    private bool isBreathing;
+//    public Animator LungsAnim, NurseAnim;
+//    public GameObject Lungs, Nurse;
+//    public TMP_Text PromptText1;
+//    public float transitionDelay = 10f;
+//    private bool isSecondAnimationPlaying = false;
+
+//    void Start()
+//    {
+//        if (Lungs != null)
+//        {
+//            LungsAnim = Lungs.GetComponent<Animator>();
+//            Lungs.SetActive(false);
+//        }
+//        else
+//        {
+//            Debug.LogError("Lungs GameObject is not assigned or missing Animator component.");
+//        }
+
+//        if (Nurse != null)
+//        {
+//            NurseAnim = Nurse.GetComponent<Animator>();
+//            Nurse.SetActive(false);
+//        }
+//        else
+//        {
+//            Debug.LogError("Nurse GameObject is not assigned or missing Animator component.");
+//        }
+
+
+//        if (toggleButton != null)
+//        {
+//            toggleButton.onClick.AddListener(ToggleBreathing);
+//        }
+//        else
+//        {
+//            Debug.LogError("Toggle button is not assigned.");
+//        }
+//    }
+
+//    public void ToggleBreathing()
+//    {
+//        isBreathing = !isBreathing;
+
+//        if (isBreathing)
+//        {
+//            Lungs.SetActive(true);
+//            StartAnimating();
+//        }
+//    }
+
+//    public void StartAnimating()
+//    {
+//        toggleButton.gameObject.SetActive(false);
+//        if (LungsAnim != null)
+//        {
+//            LungsAnim.enabled = true;
+//            LungsAnim.SetBool("Started", true);
+//            LungsAnim.SetBool("Completed", false);
+//        }
+//        else
+//        {
+//            Debug.LogWarning("Lungs Animator is not assigned. Cannot start animation.");
+//        }
+//    }
+
+//    public void LungsToNurse()
+//    {
+//        Lungs.SetActive(false);
+//        Nurse.SetActive(true);
+//        NurseAnim.SetBool("Started", true);
+//        if (NurseAnim != null)
+//        {
+//            NurseAnim.enabled = true;
+//            if (!isSecondAnimationPlaying)
+//            {
+//                isSecondAnimationPlaying = true;
+//                Invoke("TriggerSecondNurseAnimation", transitionDelay);
+//            }
+//        }
+//        else
+//        {
+//            Debug.LogError("Nurse Animator is not assigned.");
+//        }
+
+
+//    }
+
+//    private void TriggerSecondNurseAnimation()
+//        {
+//            if (NurseAnim != null)
+//            {
+//                NurseAnim.SetTrigger("EndSit");
+//                NurseAnim.SetBool("Started", false);
+//            }
+//            else
+//            {
+//                Debug.LogWarning("Nurse Animator is not assigned.");
+//            }
+//        }
+
+//        public void BreathinPrompt()
+//        {
+//            PromptText1.gameObject.SetActive(true);
+//            AudioManager.instance.PlayMusic("BreathIn");
+//            PromptText1.text = "Breath In";
+//        }
+
+//        public void HoldPrompt()
+//        {
+//            AudioManager.instance.PlayMusic("Hold");
+//            PromptText1.text = "Hold";
+
+//        }
+
+//        public void BreathoutPrompt()
+//        {
+//            AudioManager.instance.PlayMusic("BreathOut");
+//            PromptText1.text = "Breath Out Slowly";
+//        }
+
+//        public void Nurseprompt1()
+//        {
+//            AudioManager.instance.PlayMusic("Nurse1");
+//            PromptText1.text = "Now Watch me as I demonstrate a simple sit-up exercise.";
+//        }
+//        public void Nurseprompt2()
+//        {
+//        AudioManager.instance.PlayMusic("Nurse2");
+//            PromptText1.text = "Follow along at your own pace—let’s do this together";
+//        }
+//    public void Nurseprompt0()
+//    {
+//        AudioManager.instance.PlayMusic("Nurse0");
+//        PromptText1.text = "Great job with the breathing!";
+//    }
+
+
+//}
+
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class BreathingOrb : MonoBehaviour
 {
-    public Button toggleButton; // Reference to the Button
-    public Text buttonText;     // Reference to the Button's Text
-    private bool isBreathing;  // State of the animation
-    public string line;
-    public Animator animator;
-    public GameObject Lungs,Nurse;
+    public Button toggleButton;
+    public Text buttonText;
+    private bool isBreathing;
+    public Animator LungsAnim, NurseAnim;
+    public GameObject Lungs, Nurse;
+    public TMP_Text PromptText1;
+    public float transitionDelay = 10f;
+    private bool isSecondAnimationPlaying = false;
 
     void Start()
     {
+        Debug.Log("BreathingOrb script initialized.");
+
         if (Lungs != null)
         {
-            animator = Lungs.GetComponent<Animator>();
+            LungsAnim = Lungs.GetComponent<Animator>();
+            Lungs.SetActive(false);
+            Debug.Log("Lungs GameObject and Animator initialized.");
         }
-        else if (animator = null) 
+        else
         {
-            Debug.Log("Nulled");
+            Debug.LogError("Lungs GameObject is not assigned or missing Animator component.");
         }
-        
+
+        if (Nurse != null)
+        {
+            NurseAnim = Nurse.GetComponent<Animator>();
+            Nurse.SetActive(false);
+            Debug.Log("Nurse GameObject and Animator initialized.");
+        }
+        else
+        {
+            Debug.LogError("Nurse GameObject is not assigned or missing Animator component.");
+        }
 
         if (toggleButton != null)
         {
             toggleButton.onClick.AddListener(ToggleBreathing);
+            Debug.Log("Toggle button listener added.");
+        }
+        else
+        {
+            Debug.LogError("Toggle button is not assigned.");
         }
     }
 
-
     public void ToggleBreathing()
     {
-        isBreathing = !isBreathing; // Toggle the breathing state
+        isBreathing = !isBreathing;
+        Debug.Log("ToggleBreathing called. isBreathing: " + isBreathing);
 
         if (isBreathing)
         {
-            buttonText.text = line;// Update the button text
-            StartAnimating(); // Start the breathing animation
+            Lungs.SetActive(true);
+            Debug.Log("Lungs activated.");
+            StartAnimating();
         }
-       
     }
 
     public void StartAnimating()
     {
-        if (animator != null)
+        toggleButton.gameObject.SetActive(false);
+        Debug.Log("StartAnimating called.");
+
+        if (LungsAnim != null)
         {
-            animator.SetBool("Started",true);
-            animator.SetBool("Completed", false);
-            //toggleButton.interactable = false;
+            LungsAnim.enabled = true;
+            LungsAnim.SetBool("Started", true);
+            LungsAnim.SetBool("Completed", false);
+            Debug.Log("Lungs animation started.");
+        }
+        else
+        {
+            Debug.LogWarning("Lungs Animator is not assigned. Cannot start animation.");
         }
     }
 
     public void LungsToNurse()
     {
-        Debug.Log($"Switching from Lungs to Nurse. Lungs active: {Lungs.activeSelf}, Nurse active: {Nurse.activeSelf}");
+        Debug.Log("LungsToNurse called.");
 
-        if (Lungs != null) Lungs.SetActive(false);
-        if (Nurse != null)
+        Lungs.SetActive(false);
+        Nurse.SetActive(true);
+        NurseAnim.SetBool("Started", true);
+        Debug.Log("Nurse activated and animation started.");
+
+        if (NurseAnim != null)
         {
-            Nurse.SetActive(true);
-            animator = null;
-            //animator = Nurse.GetComponent<Animator>();
-           // Debug.Log($"Animator assigned to Nurse: {animator != null}");
+            NurseAnim.enabled = true;
+            if (!isSecondAnimationPlaying)
+            {
+                isSecondAnimationPlaying = true;
+                Invoke("TriggerSecondNurseAnimation", transitionDelay);
+                Debug.Log("Scheduled second nurse animation with delay: " + transitionDelay);
+            }
         }
         else
         {
-            Debug.LogError("Nurse GameObject is not assigned!");
+            Debug.LogError("Nurse Animator is not assigned.");
         }
     }
 
+    private void TriggerSecondNurseAnimation()
+    {
+        Debug.Log("TriggerSecondNurseAnimation called.");
+
+        if (NurseAnim != null)
+        {
+            NurseAnim.SetTrigger("EndSit");
+            NurseAnim.SetBool("Started", false);
+            Debug.Log("Second nurse animation triggered.");
+        }
+        else
+        {
+            Debug.LogWarning("Nurse Animator is not assigned.");
+        }
+    }
 
     public void BreathinPrompt()
     {
+        Debug.Log("BreathinPrompt called.");
 
+        PromptText1.gameObject.SetActive(true);
+        AudioManager.instance.PlayMusic("BreathIn");
+        PromptText1.text = "Breath In";
+    }
+
+    public void HoldPrompt()
+    {
+        Debug.Log("HoldPrompt called.");
+
+        AudioManager.instance.PlayMusic("Hold");
+        PromptText1.text = "Hold";
+    }
+
+    public void BreathoutPrompt()
+    {
+        Debug.Log("BreathoutPrompt called.");
+
+        AudioManager.instance.PlayMusic("BreathOut");
+        PromptText1.text = "Breath Out Slowly";
+    }
+
+    public void Nurseprompt1()
+    {
+        Debug.Log("Nurseprompt1 called.");
+
+        AudioManager.instance.PlayMusic("Nurse1");
+        PromptText1.text = "Now watch me as I demonstrate a simple sit-up exercise.";
+    }
+
+    public void Nurseprompt2()
+    {
+        Debug.Log("Nurseprompt2 called.");
+
+        AudioManager.instance.PlayMusic("Nurse2");
+        PromptText1.text = "Follow along at your own pace—let’s do this together.";
+    }
+
+    public void Nurseprompt0()
+    {
+        Debug.Log("Nurseprompt0 called.");
+
+        AudioManager.instance.PlayMusic("Nurse0");
+        PromptText1.text = "Great job with the breathing!";
     }
 }
+
+
