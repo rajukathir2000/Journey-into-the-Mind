@@ -1232,7 +1232,10 @@ CanvasRenderer:
   m_GameObject: {fileID: 231362122}
   m_CullTransparentMesh: 1
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 =======
+=======
+>>>>>>> Stashed changes
 --- !u!1 &237364213
 GameObject:
   m_ObjectHideFlags: 0
@@ -1351,6 +1354,9 @@ Light:
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 --- !u!4 &242979510 stripped
 Transform:
@@ -7901,7 +7907,10 @@ CanvasRenderer:
   m_GameObject: {fileID: 1319938173}
   m_CullTransparentMesh: 1
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 =======
+=======
+>>>>>>> Stashed changes
 --- !u!1001 &1323473826
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7969,6 +7978,9 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1323473826}
   m_PrefabAsset: {fileID: 0}
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 --- !u!1 &1324917607 stripped
 GameObject:
@@ -8726,7 +8738,10 @@ CanvasRenderer:
   m_GameObject: {fileID: 1618199119}
   m_CullTransparentMesh: 1
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 =======
+=======
+>>>>>>> Stashed changes
 --- !u!1001 &1618628848
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8794,6 +8809,9 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1618628848}
   m_PrefabAsset: {fileID: 0}
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 --- !u!1 &1619422110
 GameObject:
@@ -11335,7 +11353,10 @@ MonoBehaviour:
     m_VarianceClampScale: 0.9
     m_ContrastAdaptiveSharpening: 0
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 =======
+=======
+>>>>>>> Stashed changes
 --- !u!1001 &2103350886
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -12640,7 +12661,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalPosition.z
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
       value: -7.8
+=======
+      value: -14.85
+>>>>>>> Stashed changes
 =======
       value: -14.85
 >>>>>>> Stashed changes

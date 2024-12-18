@@ -1,4 +1,5 @@
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 ////using System.Collections;
 ////using UnityEngine;
 ////using UnityEngine.SceneManagement;
@@ -125,12 +126,15 @@
 
 =======
 >>>>>>> Stashed changes
+=======
+>>>>>>> Stashed changes
 using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class StageTransition : MonoBehaviour
 {
+<<<<<<< Updated upstream
 <<<<<<< Updated upstream
     public GameObject[] chest; // Array of chests/buttons
     public AudioSource audioSource; // Audio Source component for playing audio
@@ -140,10 +144,16 @@ public class StageTransition : MonoBehaviour
     public AudioSource audioSource;
     public AudioClip allClearedClip, chestAvailableClip, fromSafeRoomClip;
 >>>>>>> Stashed changes
+=======
+    public GameObject[] chest;
+    public AudioSource audioSource;
+    public AudioClip allClearedClip, chestAvailableClip, fromSafeRoomClip;
+>>>>>>> Stashed changes
 
     private void Start()
     {
         int currentScene = SceneManager.GetActiveScene().buildIndex;
+<<<<<<< Updated upstream
 <<<<<<< Updated upstream
 
         // Check if starting from Safe Room (Scene 0) and reset everything
@@ -182,6 +192,8 @@ public class StageTransition : MonoBehaviour
             {
                 PlayReturnAudio(); // Play audio for returning from specific scenes
 =======
+=======
+>>>>>>> Stashed changes
         if (currentScene == 0)
         {
             PlayerPrefs.DeleteAll();
@@ -226,6 +238,9 @@ public class StageTransition : MonoBehaviour
             else
             {
                 audioSource.Stop();
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
             }
         }
@@ -235,7 +250,11 @@ public class StageTransition : MonoBehaviour
     {
         SetChestInactive(0);
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
         StartCoroutine(LoadSceneAfterDelay(2, "Button1")); // Angry Scene
+=======
+        StartCoroutine(LoadSceneAfterDelay(2, "Button1"));
+>>>>>>> Stashed changes
 =======
         StartCoroutine(LoadSceneAfterDelay(2, "Button1"));
 >>>>>>> Stashed changes
@@ -245,7 +264,11 @@ public class StageTransition : MonoBehaviour
     {
         SetChestInactive(1);
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
         StartCoroutine(LoadSceneAfterDelay(3, "Button2")); // Fear Scene
+=======
+        StartCoroutine(LoadSceneAfterDelay(4, "Button2"));
+>>>>>>> Stashed changes
 =======
         StartCoroutine(LoadSceneAfterDelay(4, "Button2"));
 >>>>>>> Stashed changes
@@ -253,6 +276,7 @@ public class StageTransition : MonoBehaviour
 
     private IEnumerator LoadSceneAfterDelay(int sceneIndex, string buttonName)
     {
+<<<<<<< Updated upstream
 <<<<<<< Updated upstream
         SetChestInactive(2);
         StartCoroutine(LoadSceneAfterDelay(4, "Button3")); // Anxiety Scene
@@ -315,6 +339,21 @@ public class StageTransition : MonoBehaviour
 
     private void PlayChestAvailableAudio()
     {
+=======
+        PlayerPrefs.SetString("LastScene", buttonName);
+        PlayerPrefs.Save();
+        yield return new WaitForSeconds(3f);
+        SceneManager.LoadSceneAsync(sceneIndex);
+    }
+
+    private void SetChestInactive(int chestIndex)
+    {
+        PlayerPrefs.SetInt("Chest" + chestIndex, 0);
+    }
+
+    private void PlayChestAvailableAudio()
+    {
+>>>>>>> Stashed changes
         audioSource.clip = chestAvailableClip;
         audioSource.Play();
     }
@@ -328,6 +367,9 @@ public class StageTransition : MonoBehaviour
     private void PlayFromSafeRoomClip()
     {
         audioSource.clip = fromSafeRoomClip;
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
         audioSource.Play();
     }

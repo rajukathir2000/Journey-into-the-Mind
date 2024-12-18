@@ -1,9 +1,13 @@
 fileFormatVersion: 2
+<<<<<<< Updated upstream
 <<<<<<<< Updated upstream:Assets/Extras/key.meta
 guid: 544a17c3b253e45929b31c97cac5a2da
 ========
 guid: 7a038739957c34e809b7fcb920a8d3dc
 >>>>>>>> Stashed changes:Assets/Extras/Device Compatible.meta
+=======
+guid: 544a17c3b253e45929b31c97cac5a2da
+>>>>>>> Stashed changes
 folderAsset: yes
 DefaultImporter:
   externalObjects: {}

@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<<< Updated upstream:Assets/Extras/Device Compatible/ExciteOMeter.meta
 guid: 7c164e18aa061854d86e3699b3039a06
+========
+guid: 7a038739957c34e809b7fcb920a8d3dc
+>>>>>>>> Stashed changes:Assets/Extras/Device Compatible.meta
 folderAsset: yes
 DefaultImporter:
   externalObjects: {}
