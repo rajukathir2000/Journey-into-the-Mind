@@ -14,7 +14,12 @@ public class S1Player : MonoBehaviour
 
     private void Start()
     {
+<<<<<<< Updated upstream
         PlayerPrefs.DeleteAll(); // Reset saved states
+=======
+        PlayerPrefs.DeleteAll(); // Reset all saved chest data
+        PlayerPrefs.SetString("LastScene", "SafeRoom"); // Mark the last scene as Safe Room
+>>>>>>> Stashed changes
         PlayerPrefs.Save();
     }
     private void OnTriggerEnter(Collider other)
