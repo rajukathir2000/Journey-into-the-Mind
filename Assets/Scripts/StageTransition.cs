@@ -1,60 +1,104 @@
-//using System.Collections;
-//using System.Collections.Generic;
-//using UnityEngine;
-//using UnityEngine.SceneManagement;
-
-//public class StageTransition : MonoBehaviour
-//{
-//    public void Button1()
-//    {
-//        SceneManager.LoadSceneAsync(2);
-//    }
-
-//    public void Button2()
-//    {
-//        SceneManager.LoadScene(3);
-//    }
-
-//    public void Button3()
-//    {
-//        SceneManager.LoadScene(4);
-//    }
-
-//    public void Stage0to1()
-//    {
-//        SceneManager.LoadSceneAsync(1);
-//    }
-//}
-
 using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class StageTransition : MonoBehaviour
 {
+    public GameObject[] chest;
+    public AudioSource audioSource;
+    public AudioClip allClearedClip, chestAvailableClip, fromSafeRoomClip;
+
+    private void Start()
+    {
+        int currentScene = SceneManager.GetActiveScene().buildIndex;
+        if (currentScene == 0)
+        {
+            PlayerPrefs.DeleteAll();
+            PlayerPrefs.SetString("LastScene", "SafeRoom");
+            PlayerPrefs.Save();
+            PlayFromSafeRoomClip();
+            return;
+        }
+        if (currentScene == 1)
+        {
+            bool allChestsCleared = true;
+
+            for (int i = 0; i < chest.Length; i++)
+            {
+                if (PlayerPrefs.GetInt("Chest" + i, 1) == 0)
+                {
+                    chest[i].SetActive(false);
+                }
+                else
+                {
+                    chest[i].SetActive(true);
+                    allChestsCleared = false;
+                }
+            }
+
+            string lastScene = PlayerPrefs.GetString("LastScene", "");
+            if (lastScene == "SafeRoom")
+            {
+                PlayFromSafeRoomClip();
+            }
+            else if (lastScene == "Button1" || lastScene == "Button2")
+            {
+                if (allChestsCleared)
+                {
+                    PlayAllClearedAudio();
+                }
+                else
+                {
+                    PlayChestAvailableAudio();
+                }
+            }
+            else
+            {
+                audioSource.Stop();
+            }
+        }
+    }
+
     public void Button1()
     {
-        StartCoroutine(LoadSceneAfterDelay(2));
+        SetChestInactive(0);
+        StartCoroutine(LoadSceneAfterDelay(2, "Button1"));
     }
 
     public void Button2()
     {
-        StartCoroutine(LoadSceneAfterDelay(3));
+        SetChestInactive(1);
+        StartCoroutine(LoadSceneAfterDelay(4, "Button2"));
     }
 
-    public void Button3()
+    private IEnumerator LoadSceneAfterDelay(int sceneIndex, string buttonName)
     {
-        StartCoroutine(LoadSceneAfterDelay(4));
+        PlayerPrefs.SetString("LastScene", buttonName);
+        PlayerPrefs.Save();
+        yield return new WaitForSeconds(3f);
+        SceneManager.LoadSceneAsync(sceneIndex);
     }
 
-    public void Stage0to1()
+    private void SetChestInactive(int chestIndex)
     {
-        StartCoroutine(LoadSceneAfterDelay(1));
+        PlayerPrefs.SetInt("Chest" + chestIndex, 0);
     }
 
-    private IEnumerator LoadSceneAfterDelay(int sceneIndex)
+    private void PlayChestAvailableAudio()
     {
-        yield return new WaitForSeconds(3f); // Wait for 5 seconds
-        SceneManager.LoadSceneAsync(sceneIndex); // Load the scene asynchronously
+        audioSource.clip = chestAvailableClip;
+        audioSource.Play();
+    }
+
+    private void PlayAllClearedAudio()
+    {
+        audioSource.clip = allClearedClip;
+        audioSource.Play();
+    }
+
+    private void PlayFromSafeRoomClip()
+    {
+        audioSource.clip = fromSafeRoomClip;
+        audioSource.Play();
     }
 }
