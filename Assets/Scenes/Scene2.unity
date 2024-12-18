@@ -8163,27 +8163,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   chest:
   - {fileID: 1945156778}
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-  - {fileID: 538642090}
-  - {fileID: 222963629}
-  audioSource: {fileID: 1375300444}
-  returnClip1: {fileID: 8300000, guid: 04842260a72a64632bc466e3c59abcb2, type: 3}
-  returnClip2: {fileID: 8300000, guid: 04842260a72a64632bc466e3c59abcb2, type: 3}
-  returnClip3: {fileID: 8300000, guid: b0a83eddd71f74406a9a0d75793943f5, type: 3}
-  safeRoomClip: {fileID: 8300000, guid: 04842260a72a64632bc466e3c59abcb2, type: 3}
-=======
-=======
->>>>>>> Stashed changes
   - {fileID: 222963629}
   audioSource: {fileID: 1375300444}
   allClearedClip: {fileID: 8300000, guid: 04842260a72a64632bc466e3c59abcb2, type: 3}
   chestAvailableClip: {fileID: 8300000, guid: b0a83eddd71f74406a9a0d75793943f5, type: 3}
   fromSafeRoomClip: {fileID: 8300000, guid: 9d5c2e7bea9fa496e9a0704684805624, type: 3}
-<<<<<<< Updated upstream
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
 --- !u!4 &1375300443
 Transform:
   m_ObjectHideFlags: 0
