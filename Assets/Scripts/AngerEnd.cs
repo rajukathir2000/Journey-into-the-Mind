@@ -1,13 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class AngerEnd : MonoBehaviour
 {
     public Button toggleButton;
-    public GameObject Nose, Hand,Nurse;
-    // Start is called before the first frame update
+    public GameObject Nose, Hand,Nurse,key;
+    public TMP_Text lastText;
+    public int delay;
+
     void Start()
     {
         if (toggleButton != null)
@@ -22,26 +25,25 @@ public class AngerEnd : MonoBehaviour
 
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
     void StartAnim()
     {
         toggleButton.gameObject.SetActive(false);
         Hand.SetActive(true);
         Nose.SetActive(true);
-        Invoke("ClosingSession", 35f);
+        Invoke(nameof(ClosingSession), delay);
     }
 
     void ClosingSession()
     {
+        Invoke(nameof(Key), 2f);
+        lastText.text = "Your anger has subsided after this therapy. Here's your key to the safe room.";
         Hand.SetActive(false);
         Nose.SetActive(false);
-        Nurse.gameObject.SetActive(true);
-
-
+        Nurse.SetActive(true);
     }
 
+    void Key()
+    {
+        Instantiate(key, new Vector3(0, 1.5f, 2.25f), Quaternion.identity);
+    }
 }

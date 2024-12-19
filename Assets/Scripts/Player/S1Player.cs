@@ -8,12 +8,19 @@ public class S1Player : MonoBehaviour
 {
     public Animator nurseAnim;
     public AudioSource audioSource;
-    public AudioClip closeEyes;
+    public AudioClip closeEyes, thanking;
     public Image blackPanel;
     public ParticleSystem startParticle, carParticle;
+    public GameObject Nurse;
 
     private void Start()
     {
+        string lastScene = PlayerPrefs.GetString("LastScene","");
+        Debug.Log(lastScene);
+        if (lastScene == "Mind")
+        {
+            PlayAudioFromMind();
+        }
         PlayerPrefs.DeleteAll(); // Reset all saved chest data
         PlayerPrefs.SetString("LastScene", "SafeRoom"); // Mark the last scene as Safe Room
         PlayerPrefs.Save();
@@ -26,8 +33,8 @@ public class S1Player : MonoBehaviour
             startParticle.gameObject.SetActive(false);
             Debug.Log("StartedTherapy");
             nurseAnim.SetBool("Start", true);
-            Invoke("NurseIntro", 3f);
-            Invoke("GetInCar", 14f);
+            Invoke(nameof(NurseIntro), 3f);
+            Invoke(nameof(GetInCar), 14f);
         }
         else if(other.gameObject.CompareTag("CarMarker"))
         {
@@ -35,7 +42,7 @@ public class S1Player : MonoBehaviour
             Debug.Log("GetIncar");
             gameObject.transform.SetPositionAndRotation(new Vector3(0.6f, -0.5f, -12.5f),Quaternion.Euler(0f, 0f, 0f));
             Debug.Log(transform.position);
-            Invoke("CloseEyes", 3f);
+            Invoke(nameof(CloseEyes), 3f);
         }
     }
 
@@ -57,6 +64,7 @@ public class S1Player : MonoBehaviour
         audioSource.Play();
         StartCoroutine(FadeIn());
         StartCoroutine(LoadSceneAfterDelay(1));
+        //Nurse.SetActive(false);
     }
 
     private IEnumerator LoadSceneAfterDelay(int sceneIndex)
@@ -79,5 +87,15 @@ public class S1Player : MonoBehaviour
         }
 
         blackPanel.color = new Color(0, 0, 0, 1); // Ensure it ends fully black
+    }
+
+    void PlayAudioFromMind()
+    {
+        audioSource.clip = thanking;
+        audioSource.Play();
+        //Nurse.SetActive(true);
+        Nurse.transform.position = new Vector3(0,0.4f,-4.5f);
+        nurseAnim.SetBool("Thanks", true);
+
     }
 }
