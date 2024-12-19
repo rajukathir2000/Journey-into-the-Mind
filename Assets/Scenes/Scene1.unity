@@ -3987,6 +3987,10 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: efba7b00ebb3654429e0aef13704c006, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 43bb367ab36894b3792443c82be9dbcf, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
@@ -7985,9 +7989,11 @@ MonoBehaviour:
   nurseAnim: {fileID: 1990530742}
   audioSource: {fileID: 1990530743}
   closeEyes: {fileID: 8300000, guid: 9c6ef8a6562e34fd9a2011f5ff43b7e8, type: 3}
+  thanking: {fileID: 8300000, guid: a279f3f4a5d3c48c9abec0069f328004, type: 3}
   blackPanel: {fileID: 1619422112}
   startParticle: {fileID: 1372991801}
   carParticle: {fileID: 242979512}
+  Nurse: {fileID: 1990530740}
 --- !u!136 &1324917611
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -10683,7 +10689,7 @@ AudioSource:
   Priority: 128
   DopplerLevel: 1
   MinDistance: 1
-  MaxDistance: 15.69412
+  MaxDistance: 22
   Pan2D: 0
   rolloffMode: 2
   BypassEffects: 0
@@ -12627,7 +12633,7 @@ PrefabInstance:
     - target: {fileID: 5773256366622995465, guid: 5eccbf4be2c00e94689ee8062e4e7276,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -14.85
+      value: -5.3
       objectReference: {fileID: 0}
     - target: {fileID: 5773256366622995465, guid: 5eccbf4be2c00e94689ee8062e4e7276,
         type: 3}

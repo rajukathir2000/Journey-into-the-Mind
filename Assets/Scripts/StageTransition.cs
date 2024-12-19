@@ -46,10 +46,14 @@ public class StageTransition : MonoBehaviour
                 if (allChestsCleared)
                 {
                     PlayAllClearedAudio();
+                    PlayerPrefs.SetString("LastScene", "Mind");
+                    PlayerPrefs.Save();
                 }
                 else
                 {
                     PlayChestAvailableAudio();
+                    PlayerPrefs.SetString("LastScene", "Mind");
+                    PlayerPrefs.Save();
                 }
             }
             else
