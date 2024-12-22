@@ -1,0 +1,31 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.UI;
+
+public class Watering : MonoBehaviour
+{
+    public Button button;
+    public Animator treeAnim;
+    public ParticleSystem rainParticle;
+    void Start()
+    {
+        treeAnim.gameObject.SetActive(false);
+        rainParticle.gameObject.SetActive(false);
+        button.onClick.AddListener(OnWateringButtonClick);
+    }
+
+    void OnWateringButtonClick()
+    {
+        // Activate the animation and particle system
+        treeAnim.gameObject.SetActive(true);
+        rainParticle.gameObject.SetActive(true);
+
+        // Play the animation and the particle system
+        treeAnim.SetTrigger("Watering"); // Make sure you have a trigger parameter called "Watering" in your animator
+        rainParticle.Play(); // Start the rain particles
+
+        // Start a coroutine to stop the particles after 10 seconds
+        StartCoroutine(StopRainParticlesAfterDelay(10f));
+    }
+}
