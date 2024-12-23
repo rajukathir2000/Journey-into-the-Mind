@@ -24,7 +24,7 @@ public class S2Player : MonoBehaviour
 
     private IEnumerator FadeIn()
     {
-        portalVFX.Play();
+        
         float duration = 2f;
         float currentTime = 0f;
 
@@ -37,6 +37,7 @@ public class S2Player : MonoBehaviour
         }
 
         blackPanel.color = new Color(0, 0, 0, 1);
+        portalVFX.Play();
         SceneManager.LoadSceneAsync(0);
     }
 
