@@ -36,7 +36,7 @@ public class AngerEnd : MonoBehaviour
 
     void ClosingSession()
     {
-        Invoke(nameof(Key), 2f);
+        Invoke(nameof(Key), 3f);
         lastText.text = "Your anger has subsided after this therapy. Here's your key to the safe room.";
         Hand.SetActive(false);
         Nose.SetActive(false);

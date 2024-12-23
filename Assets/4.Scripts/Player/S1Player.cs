@@ -19,7 +19,9 @@ public class S1Player : MonoBehaviour
     }
     private void Start()
     {
-        
+        Application.targetFrameRate = -1;
+        QualitySettings.vSyncCount = 0;
+
         string lastScene = PlayerPrefs.GetString("LastScene","");
         Debug.Log(lastScene);
         if (lastScene == "Mind")
