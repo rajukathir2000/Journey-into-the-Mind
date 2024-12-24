@@ -3315,7 +3315,7 @@ PrefabInstance:
     - target: {fileID: 8363717526900951047, guid: 65c7ee4619929b04aab3f76e20c7cad0,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0.3291564
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8363717526980914029, guid: 65c7ee4619929b04aab3f76e20c7cad0,
         type: 3}
@@ -3525,7 +3525,7 @@ PrefabInstance:
     - target: {fileID: 8363717527753277138, guid: 65c7ee4619929b04aab3f76e20c7cad0,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0.000030517578
+      value: 0.000061035156
       objectReference: {fileID: 0}
     - target: {fileID: 8363717527905725919, guid: 65c7ee4619929b04aab3f76e20c7cad0,
         type: 3}
@@ -13220,7 +13220,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Toggle the lever to water the palnt
+  m_text: Toggle the lever to water the plant
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 67966e96f84f741cdb6b11732957a13c, type: 2}
   m_sharedMaterial: {fileID: 7219163617085885087, guid: 67966e96f84f741cdb6b11732957a13c,
