@@ -1,7 +1,7 @@
 {
     "logSettings": {
         "sessionId": "SessionID",
-        "mainLogFolder": "/Users/rajukathir/Projects/Kaarthick/Assets/../LogFiles_ExciteOMeter/",
+        "mainLogFolder": "/Users/rajukathir/Projects/AngrySceneModerate/Moderate-UK2/Assets/../LogFiles_ExciteOMeter/",
         "mainDebugFilename": "logDebug.txt",
         "sessionJsonFilename": "sessionData.json",
         "captureScreenshots": true,
